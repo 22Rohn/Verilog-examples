@@ -1,0 +1,26 @@
+
+module Half_Adder(
+  input a,
+  input b,
+  output s,
+  output c
+ );
+ 
+ assign s = a^b; // sum of two bits a and b
+ assign c = a&b; // Carry bit
+endmodule
+
+module tb_half_adder;
+ reg a,b;
+ wire s,c;
+ 
+ Half_Adder uut(.a(a),.b(b),.s(s),.c(c));
+ initial begin
+ a=0;b=0;
+ #10 a=0;b=1;  // input a=0,b=1 after 10ns
+ #10 a=1;b=0;  // input a=1,b=0 after 10ns
+ #10 a=1;b=1;  // input a=1,b=1 after 10ns
+ end
+ 
+
+endmodule
